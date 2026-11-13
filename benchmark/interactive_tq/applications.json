@@ -1,0 +1,27 @@
+[
+  {"id":"oil_leak","label":"Oil leak","version":"1.0-sim","budget_s":600,"metrics":[
+    {"id":"runnable","label":"Run eligibility","kind":"state"},
+    {"id":"job","label":"PBS job state","kind":"state"},
+    {"id":"status","label":"Application activity","kind":"state"},
+    {"id":"sched","label":"Scheduling state","kind":"state"},
+    {"id":"turn_used_s","label":"Turn runtime","kind":"number","unit":"s"},
+    {"id":"alert","label":"Oil spill alert","aliases":["spill warnings"],"kind":"event"},
+    {"id":"false_alert","label":"False alert","kind":"event","profile":"partial"}
+  ]},
+  {"id":"ship_detection","label":"Ship detection","version":"1.0-sim","budget_s":300,"metrics":[
+    {"id":"runnable","label":"Run eligibility","kind":"state"},
+    {"id":"job","label":"PBS job state","kind":"state"},
+    {"id":"status","label":"Application activity","kind":"state"},
+    {"id":"sched","label":"Scheduling state","kind":"state"},
+    {"id":"turn_used_s","label":"Turn runtime","kind":"number","unit":"s"},
+    {"id":"alert","label":"Ship alert","kind":"event"},
+    {"id":"detected","label":"Ship detection events","kind":"event"}
+  ]},
+  {"id":"aurora_watch","label":"Aurora watch","version":"1.1-sim","budget_s":180,"metrics":[
+    {"id":"glow_index","label":"Aurora glow index","aliases":["brightness index","glow index"],"kind":"number","unit":"ratio"},
+    {"id":"flare_mark","label":"Flare markers","aliases":["flare marker","light burst"],"kind":"event"},
+    {"id":"job","label":"PBS job state","kind":"state"},
+    {"id":"turn_used_s","label":"Turn runtime","kind":"number","unit":"s"},
+    {"id":"pixel_counter","label":"Processed pixels","aliases":["pixel count"],"kind":"number","unit":"px","registered":false}
+  ]}
+]

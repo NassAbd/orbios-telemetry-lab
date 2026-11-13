@@ -1,0 +1,883 @@
+{
+  "base": [
+    {
+      "id": "P001",
+      "description": "SoC processor temperature",
+      "aliases": [
+        "temperature",
+        "how hot",
+        "processor heat",
+        "SoC thermal measurement"
+      ],
+      "kind": "number",
+      "unit": "°C",
+      "every_s": 10,
+      "limits": {
+        "normal": 45.0,
+        "warning": 65.0,
+        "clears": 63.0,
+        "critical": 80.0,
+        "hard": 85.0
+      },
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P002",
+      "description": "Brainstem escalation phase",
+      "aliases": [
+        "brainstem phase",
+        "escalation",
+        "phase changes"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P010",
+      "description": "Bench PDU mains voltage",
+      "aliases": [
+        "mains voltage",
+        "Bench PDU mains voltage"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P011",
+      "description": "Bench PDU mains current",
+      "aliases": [
+        "PDU current",
+        "Bench PDU mains current"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P012",
+      "description": "Bench PDU mains frequency",
+      "aliases": [
+        "mains frequency",
+        "Bench PDU mains frequency"
+      ],
+      "kind": "number",
+      "unit": "Hz",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P013",
+      "description": "Bench PDU active power",
+      "aliases": [
+        "PDU real power",
+        "Bench PDU active power"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P014",
+      "description": "Bench PDU reactive power",
+      "aliases": [
+        "reactive power",
+        "Bench PDU reactive power"
+      ],
+      "kind": "number",
+      "unit": "VAR",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P015",
+      "description": "Bench PDU apparent power",
+      "aliases": [
+        "apparent power",
+        "Bench PDU apparent power"
+      ],
+      "kind": "number",
+      "unit": "VA",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P016",
+      "description": "Bench PDU power factor",
+      "aliases": [
+        "power factor",
+        "Bench PDU power factor"
+      ],
+      "kind": "number",
+      "unit": "ratio",
+      "every_s": 60,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P020",
+      "description": "Pi EXT5V input supply voltage",
+      "aliases": [
+        "input voltage",
+        "supply",
+        "undervoltage",
+        "under-voltage"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {
+        "low": 4.63
+      },
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P021",
+      "description": "Pi total board power consumption",
+      "aliases": [
+        "board power",
+        "consumption",
+        "total board watts"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P022",
+      "description": "SoC core voltage from its own voltage sensor, distinct from the VDD_CORE rail",
+      "aliases": [
+        "core voltage",
+        "SoC core voltage"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P100",
+      "description": "3V7_WL_SW power rail voltage volts",
+      "aliases": [
+        "3V7_WL_SW voltage volts",
+        "3V7 WL SW voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P101",
+      "description": "3V7_WL_SW power rail current amperes",
+      "aliases": [
+        "3V7_WL_SW current amperes",
+        "3V7 WL SW current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P102",
+      "description": "3V7_WL_SW power rail power watts drawing consumption",
+      "aliases": [
+        "3V7_WL_SW power watts drawing consumption",
+        "3V7 WL SW power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P110",
+      "description": "3V3_SYS power rail voltage volts",
+      "aliases": [
+        "3V3_SYS voltage volts",
+        "3V3 SYS voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P111",
+      "description": "3V3_SYS power rail current amperes",
+      "aliases": [
+        "3V3_SYS current amperes",
+        "3V3 SYS current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P112",
+      "description": "3V3_SYS power rail power watts drawing consumption",
+      "aliases": [
+        "3V3_SYS power watts drawing consumption",
+        "3V3 SYS power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P120",
+      "description": "1V8_SYS power rail voltage volts",
+      "aliases": [
+        "1V8_SYS voltage volts",
+        "1V8 SYS voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P121",
+      "description": "1V8_SYS power rail current amperes",
+      "aliases": [
+        "1V8_SYS current amperes",
+        "1V8 SYS current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P122",
+      "description": "1V8_SYS power rail power watts drawing consumption",
+      "aliases": [
+        "1V8_SYS power watts drawing consumption",
+        "1V8 SYS power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P130",
+      "description": "DDR_VDD2 power rail voltage volts",
+      "aliases": [
+        "DDR_VDD2 voltage volts",
+        "DDR VDD2 voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P131",
+      "description": "DDR_VDD2 power rail current amperes",
+      "aliases": [
+        "DDR_VDD2 current amperes",
+        "DDR VDD2 current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P132",
+      "description": "DDR_VDD2 power rail power watts drawing consumption",
+      "aliases": [
+        "DDR_VDD2 power watts drawing consumption",
+        "DDR VDD2 power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P140",
+      "description": "DDR_VDDQ power rail voltage volts",
+      "aliases": [
+        "DDR_VDDQ voltage volts",
+        "DDR VDDQ voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P141",
+      "description": "DDR_VDDQ power rail current amperes",
+      "aliases": [
+        "DDR_VDDQ current amperes",
+        "DDR VDDQ current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P142",
+      "description": "DDR_VDDQ power rail power watts drawing consumption",
+      "aliases": [
+        "DDR_VDDQ power watts drawing consumption",
+        "DDR VDDQ power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P150",
+      "description": "1V1_SYS power rail voltage volts",
+      "aliases": [
+        "1V1_SYS voltage volts",
+        "1V1 SYS voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P151",
+      "description": "1V1_SYS power rail current amperes",
+      "aliases": [
+        "1V1_SYS current amperes",
+        "1V1 SYS current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P152",
+      "description": "1V1_SYS power rail power watts drawing consumption",
+      "aliases": [
+        "1V1_SYS power watts drawing consumption",
+        "1V1 SYS power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P160",
+      "description": "0V8_SW power rail voltage volts",
+      "aliases": [
+        "0V8_SW voltage volts",
+        "0V8 SW voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P161",
+      "description": "0V8_SW power rail current amperes",
+      "aliases": [
+        "0V8_SW current amperes",
+        "0V8 SW current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P162",
+      "description": "0V8_SW power rail power watts drawing consumption",
+      "aliases": [
+        "0V8_SW power watts drawing consumption",
+        "0V8 SW power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P170",
+      "description": "VDD_CORE power rail voltage volts",
+      "aliases": [
+        "VDD_CORE voltage volts",
+        "VDD CORE voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P171",
+      "description": "VDD_CORE power rail current amperes",
+      "aliases": [
+        "VDD_CORE current amperes",
+        "VDD CORE current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P172",
+      "description": "VDD_CORE power rail power watts drawing consumption",
+      "aliases": [
+        "VDD_CORE power watts drawing consumption",
+        "VDD CORE power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P180",
+      "description": "0V8_AON power rail voltage volts",
+      "aliases": [
+        "0V8_AON voltage volts",
+        "0V8 AON voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P181",
+      "description": "0V8_AON power rail current amperes",
+      "aliases": [
+        "0V8_AON current amperes",
+        "0V8 AON current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P182",
+      "description": "0V8_AON power rail power watts drawing consumption",
+      "aliases": [
+        "0V8_AON power watts drawing consumption",
+        "0V8 AON power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P190",
+      "description": "HDMI power rail voltage volts",
+      "aliases": [
+        "HDMI voltage volts",
+        "HDMI voltage volts"
+      ],
+      "kind": "number",
+      "unit": "V",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P191",
+      "description": "HDMI power rail current amperes",
+      "aliases": [
+        "HDMI current amperes",
+        "HDMI current amperes"
+      ],
+      "kind": "number",
+      "unit": "A",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "P192",
+      "description": "HDMI power rail power watts drawing consumption",
+      "aliases": [
+        "HDMI power watts drawing consumption",
+        "HDMI power watts drawing consumption"
+      ],
+      "kind": "number",
+      "unit": "W",
+      "every_s": 10,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "APPS",
+      "description": "List tracked applications and their versions",
+      "aliases": [
+        "which apps",
+        "apps on board",
+        "tracked applications",
+        "application list"
+      ],
+      "kind": "apps",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide v4"
+    },
+    {
+      "id": "A.oil_leak.runnable",
+      "description": "oil_leak eligibility to run, authorization, presence, phase and conditions",
+      "aliases": [
+        "oil_leak can it run",
+        "oil_leak why not running",
+        "oil_leak eligible",
+        "oil leak can it run",
+        "oil leak why not running",
+        "oil leak eligible"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.oil_leak.job",
+      "description": "oil_leak PBS job running suspended queued held exiting none unknown",
+      "aliases": [
+        "oil_leak is running",
+        "oil_leak job",
+        "oil_leak suspended",
+        "oil leak is running",
+        "oil leak job",
+        "oil leak suspended"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.oil_leak.status",
+      "description": "oil_leak application own activity startup busy idle unknown",
+      "aliases": [
+        "oil_leak what is it doing",
+        "oil_leak busy",
+        "oil_leak idle",
+        "oil_leak application activity",
+        "oil leak what is it doing",
+        "oil leak busy",
+        "oil leak idle",
+        "oil leak application activity"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.oil_leak.sched",
+      "description": "oil_leak Mind scheduling pending_stop done_pass waiting_for_cores wanted not_wanted unknown",
+      "aliases": [
+        "oil_leak waiting",
+        "oil_leak scheduling",
+        "oil_leak why not running",
+        "oil_leak stop pending",
+        "oil leak waiting",
+        "oil leak scheduling",
+        "oil leak why not running",
+        "oil leak stop pending"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.oil_leak.turn_used_s",
+      "description": "oil_leak run time used during this turn compared with its budget",
+      "aliases": [
+        "oil_leak how long has it run",
+        "oil_leak run time",
+        "oil_leak over budget",
+        "oil leak how long has it run",
+        "oil leak run time",
+        "oil leak over budget"
+      ],
+      "kind": "number",
+      "unit": "s",
+      "every_s": null,
+      "limits": {
+        "budget": 600.0
+      },
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.oil_leak.alert",
+      "description": "oil_leak alerts with confidence scores",
+      "aliases": [
+        "oil_leak alert",
+        "oil leak alerts with confidence scores"
+      ],
+      "kind": "event",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.oil_leak.false_alert",
+      "description": "oil_leak rejected false alarms",
+      "aliases": [
+        "oil_leak false alert",
+        "oil leak rejected false alarms"
+      ],
+      "kind": "event",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.runnable",
+      "description": "ship_detection eligibility to run, authorization, presence, phase and conditions",
+      "aliases": [
+        "ship_detection can it run",
+        "ship_detection why not running",
+        "ship_detection eligible",
+        "ship detection can it run",
+        "ship detection why not running",
+        "ship detection eligible"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.job",
+      "description": "ship_detection PBS job running suspended queued held exiting none unknown",
+      "aliases": [
+        "ship_detection is running",
+        "ship_detection job",
+        "ship_detection suspended",
+        "ship detection is running",
+        "ship detection job",
+        "ship detection suspended"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.status",
+      "description": "ship_detection application own activity startup busy idle unknown",
+      "aliases": [
+        "ship_detection what is it doing",
+        "ship_detection busy",
+        "ship_detection idle",
+        "ship_detection application activity",
+        "ship detection what is it doing",
+        "ship detection busy",
+        "ship detection idle",
+        "ship detection application activity"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.sched",
+      "description": "ship_detection Mind scheduling pending_stop done_pass waiting_for_cores wanted not_wanted unknown",
+      "aliases": [
+        "ship_detection waiting",
+        "ship_detection scheduling",
+        "ship_detection why not running",
+        "ship_detection stop pending",
+        "ship detection waiting",
+        "ship detection scheduling",
+        "ship detection why not running",
+        "ship detection stop pending"
+      ],
+      "kind": "state",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.turn_used_s",
+      "description": "ship_detection run time used during this turn compared with its budget",
+      "aliases": [
+        "ship_detection how long has it run",
+        "ship_detection run time",
+        "ship_detection over budget",
+        "ship detection how long has it run",
+        "ship detection run time",
+        "ship detection over budget"
+      ],
+      "kind": "number",
+      "unit": "s",
+      "every_s": null,
+      "limits": {
+        "budget": 300.0
+      },
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.alert",
+      "description": "ship_detection alerts with confidence scores",
+      "aliases": [
+        "ship_detection alert",
+        "ship detection alerts with confidence scores"
+      ],
+      "kind": "event",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.ship_detection.detected",
+      "description": "ship_detection detections of objects",
+      "aliases": [
+        "ship_detection detected",
+        "ship detection detections of objects"
+      ],
+      "kind": "event",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": true,
+      "provenance": "guide known app"
+    },
+    {
+      "id": "A.wildfire.alert",
+      "description": "Wildfire alerts are defined but not recorded by the documented tq deployment",
+      "aliases": [
+        "wildfire alerts"
+      ],
+      "kind": "event",
+      "unit": null,
+      "every_s": null,
+      "limits": {},
+      "registered": false,
+      "provenance": "guide section 9, not enabled"
+    }
+  ]
+}

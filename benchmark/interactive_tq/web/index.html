@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OrbiOS Telemetry Lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/catalogue.js" defer></script>
+  <script src="/pipeline.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="top"><div class="wrap masthead">
+    <div class="brand"><span aria-hidden="true" class="mark">◎</span><span>OrbiOS <small>Telemetry Lab</small></span></div>
+    <span class="simulation">SIMULATION — NO LIVE ORBIOS DATA</span>
+  </div>
+  <nav class="wrap navigation" aria-label="Telemetry Lab">
+    <a href="#ask-telemetry" data-nav="ask-telemetry">Ask Telemetry</a>
+    <a href="#telemetry-catalogue" data-nav="telemetry-catalogue">Telemetry Catalogue</a>
+    <a href="#how-it-works" data-nav="how-it-works">How It Works</a>
+  </nav>
+  </header>
+  <main class="wrap">
+    <section id="ask-view" data-view="ask-telemetry" aria-labelledby="ask-heading">
+    <div class="intro">
+      <div><h1 id="ask-heading" tabindex="-1">Ask Telemetry</h1><p>Ask an English question about the fictional orbit history.</p></div>
+      <div class="clock"><span>SIMULATION CLOCK · UTC</span><strong id="clock">Connecting…</strong></div>
+    </div>
+    <div class="workspace">
+      <div class="main-column">
+        <section class="panel compose" aria-labelledby="ask-title">
+          <h2 id="ask-title">Ask a question</h2>
+          <form id="ask">
+            <label class="sr-only" for="question">Telemetry question in English</label>
+            <textarea id="question" rows="2" required maxlength="600" placeholder="What is the SoC temperature right now?"></textarea>
+            <div class="actions">
+              <label class="inline">Mode <select id="mode"><option value="symbolic">Symbolic</option><option value="minilm">MiniLM</option><option value="hybrid" selected>Hybrid</option></select></label>
+              <div class="buttons"><button type="button" id="compare" class="secondary">Compare modes</button><button type="submit" class="primary" id="submit">Ask telemetry</button></div>
+            </div>
+          </form>
+          <details><summary>About this archive</summary><p>Values and events come from a fixed synthetic scenario. A gap means an unobserved period. Stale readings may precede the requested window. Longer threshold windows give bounds for observed samples; the demo does not reproduce the live recorder’s rollups.</p></details>
+        </section>
+        <section class="panel result" aria-labelledby="result-title">
+          <div class="panel-head"><h2 id="result-title">Result</h2><span class="badge" id="result-badge">Ready</span></div>
+          <div class="submission" id="submission" hidden>
+            <div class="panel-head"><strong>Submitted question</strong><span id="submitted-mode"></span></div>
+            <p id="submitted-question"></p>
+            <p id="draft-notice" hidden>The question in the editor has changed. This result belongs to the submitted question above.</p>
+          </div>
+          <p id="message" role="status" aria-live="polite">Ask a question or try one of the examples.</p>
+          <div id="readings"></div>
+          <section id="query-section" hidden>
+            <h3>Validated tq queries</h3>
+            <pre id="query-lines"></pre>
+            <ul id="slots"></ul>
+          </section>
+          <details id="diagnostics" hidden><summary>Explain this answer</summary><div id="decisions"></div></details>
+          <div id="comparison"></div>
+        </section>
+      </div>
+      <aside class="side-column">
+        <section class="panel" aria-labelledby="examples-title">
+          <h2 id="examples-title">Guided examples</h2>
+          <div id="examples" class="example-list"></div>
+          <button type="button" id="add-example-app" class="secondary">Add and query a fictional app</button>
+          <p id="example-app-status" role="status" class="muted"></p>
+        </section>
+      </aside>
+    </div>
+    </section>
+
+    <section data-view="telemetry-catalogue" hidden aria-labelledby="catalogue-heading">
+      <div class="intro"><div><h1 id="catalogue-heading" tabindex="-1">Telemetry Catalogue</h1>
+        <p>Explore the capabilities available to this session and the declarations awaiting synthetic data.</p></div></div>
+      <div class="catalogue-layout">
+        <section class="panel catalogue" aria-labelledby="catalogue-title">
+          <div class="panel-head"><h2 id="catalogue-title">Capabilities</h2><span class="badge" id="catalogue-count" aria-live="polite"></span></div>
+          <div class="catalogue-filters">
+            <label class="wide">Search<input type="search" id="filter" placeholder="Metric ID, name, alias or unit"></label>
+            <label class="wide">Group<select id="catalogue-group"><option value="">All groups</option></select></label>
+            <label>Type<select id="catalogue-type"><option value="">All types</option><option value="number">Number</option><option value="state">State</option><option value="event">Event</option><option value="apps">Inventory</option></select></label>
+            <label>Availability<select id="catalogue-availability"><option value="">All capabilities</option><option value="registered">Registered</option><option value="unavailable">Unavailable</option></select></label>
+          </div>
+          <div id="catalogue" class="catalogue-list"></div>
+        </section>
+        <section class="panel metric-detail" aria-labelledby="metric-title">
+          <h2 id="metric-title" tabindex="-1">Metric details</h2>
+          <div id="metric-detail"><p>Select a capability to inspect its metadata and synthetic history.</p></div>
+        </section>
+      </div>
+      <details class="panel editor" id="application-editor">
+        <summary id="editor-title">Edit fictional applications</summary>
+          <h2 id="editor-title">Fictional applications</h2>
+          <p>Changes apply to this session. The history for added metrics is generated from the simulation seed.</p>
+          <label for="app-picker">Application</label><select id="app-picker"><option value="">New application</option></select>
+          <form id="manifest">
+            <div class="form-grid">
+              <label>App ID<input name="id" required pattern="[a-z][a-z0-9_]*" maxlength="32" placeholder="orbit_probe"></label>
+              <label>Display name<input name="label" required maxlength="96" placeholder="Orbit probe"></label>
+              <label>Version<input name="version" required value="1.0-sim" maxlength="24"></label>
+              <label>Budget (s)<input name="budget_s" type="number" required min="1" max="86400" value="180"></label>
+            </div>
+            <h3>Metrics</h3><div id="metrics"></div>
+            <button type="button" id="add-metric" class="secondary small">+ Add metric</button>
+            <div class="actions"><button type="button" id="remove-app" class="danger" hidden>Remove app</button><button type="submit" class="primary">Save manifest</button></div>
+          </form>
+          <p id="editor-status" role="status" aria-live="polite"></p>
+      </details>
+    </section>
+
+    <section data-view="how-it-works" hidden aria-labelledby="pipeline-heading">
+      <div class="intro"><div><h1 id="pipeline-heading" tabindex="-1">How It Works</h1>
+        <p>Follow a question from English wording to a sourced answer from the synthetic archive.</p></div></div>
+      <div class="mode-grid" id="mode-explanations"></div>
+      <section class="panel pipeline-panel" aria-labelledby="pipeline-title">
+        <h2 id="pipeline-title">From question to answer</h2>
+        <ol id="pipeline-diagram" class="pipeline-diagram" aria-label="Telemetry question processing stages"></ol>
+        <div class="worked-example">
+          <h3>Worked example</h3>
+          <blockquote>What’s the maximum CPU temperature today?</blockquote>
+          <pre>Q 1 P001 24h stats</pre>
+          <p><code>stats</code> retrieves the minimum, maximum and mean, plus the number of observed samples.</p>
+          <div class="buttons"><button id="run-worked-example" type="button" class="primary">Run in Ask Telemetry</button><a class="metric-link" href="#telemetry-catalogue/P001">Inspect P001</a></div>
+        </div>
+        <div id="pipeline-stages"></div>
+      </section>
+    </section>
+  </main>
+  <footer class="wrap">Local synthetic archive <span id="scenario"></span></footer>
+  <template id="metric-template">
+    <fieldset class="metric">
+      <legend>Metric</legend>
+      <div class="form-grid">
+        <label>ID<input name="metric_id" required pattern="[a-z][a-z0-9_]*" maxlength="32" placeholder="signal_level"></label>
+        <label>Label<input name="metric_label" required maxlength="96" placeholder="Signal level"></label>
+        <label>Kind<select name="kind"><option value="number">Number</option><option value="state">State</option><option value="event">Event</option></select></label>
+        <label>Unit<input name="unit" maxlength="16" placeholder="V"></label>
+        <label>Observation<select name="profile"><option value="complete">Complete</option><option value="partial">Partial</option><option value="stale">Stale</option><option value="no_data">No data</option></select></label>
+        <label class="check"><input type="checkbox" name="registered" checked> Registered</label>
+      </div>
+      <label>Aliases, comma separated<input name="aliases" placeholder="signal strength, amplitude"></label>
+      <button type="button" class="remove-metric secondary small">Remove metric</button>
+    </fieldset>
+  </template>
+</body>
+</html>

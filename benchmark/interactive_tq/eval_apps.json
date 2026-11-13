@@ -1,0 +1,70 @@
+{
+  "added": {
+    "id": "ion_survey",
+    "label": "Ion survey",
+    "version": "0.3-sim",
+    "budget_s": 240,
+    "metrics": [
+      {
+        "id": "dose_rate",
+        "label": "Dose rate",
+        "aliases": [
+          "ion dose"
+        ],
+        "kind": "number",
+        "unit": "ratio"
+      },
+      {
+        "id": "pulse_flag",
+        "label": "Ion pulse markers",
+        "aliases": [
+          "pulse flags",
+          "field disturbance"
+        ],
+        "kind": "event"
+      },
+      {
+        "id": "peak_charge",
+        "label": "Peak charge",
+        "kind": "number",
+        "unit": "V",
+        "registered": false
+      }
+    ]
+  },
+  "edited": {
+    "id": "ion_survey",
+    "label": "Ion survey",
+    "version": "0.4-sim",
+    "budget_s": 280,
+    "metrics": [
+      {
+        "id": "dose_rate",
+        "label": "Dose rate",
+        "aliases": [
+          "ion dose"
+        ],
+        "kind": "number",
+        "unit": "ratio",
+        "registered": false
+      },
+      {
+        "id": "pulse_flag",
+        "label": "Ion pulse markers",
+        "aliases": [
+          "pulse flags",
+          "field disturbance"
+        ],
+        "kind": "event",
+        "registered": true
+      },
+      {
+        "id": "peak_charge",
+        "label": "Peak charge",
+        "kind": "number",
+        "unit": "V",
+        "registered": true
+      }
+    ]
+  }
+}

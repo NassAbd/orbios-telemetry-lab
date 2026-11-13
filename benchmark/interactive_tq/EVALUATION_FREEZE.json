@@ -1,0 +1,13 @@
+{
+  "protocol": "interactive-tq-held-out-v1",
+  "policy": "New hand-authored questions and fixture facts; no prior TEST rows used for tuning; no parameter changes after evaluation.",
+  "semantic_cosine_floor": 0.45,
+  "semantic_top_two_margin": 0.035,
+  "sha256": {
+    "benchmark/interactive_tq/cases.json": "04204f394bac6cfb427020e1ed6dbed277f6cc9f834c38724b90c51a1cf5352e",
+    "benchmark/interactive_tq/eval_apps.json": "f9da82fecd0dd8d423e7eb65e5f520eff57172fffc4b502110ef467467adbfb6",
+    "benchmark/interactive_tq/scenario.json": "88a99d9ecdf13016912647a33c75b471525a2deefd6029ba6d097914c0690fda",
+    "benchmark/interactive_tq/applications.json": "f46d263b36cee4f5752ecc0415aa81725f29d16dcc100b9dcd2171193436c822",
+    "benchmark/tq_poc/catalog.json": "1df53bb863e173849e26cdeb005f5511bbce715572a206261fd4772b8157944f"
+  }
+}

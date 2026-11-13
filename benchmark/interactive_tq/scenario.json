@@ -1,0 +1,30 @@
+{
+  "id": "training-orbit-v1",
+  "seed": 4919,
+  "clock": "20261112T120000Z",
+  "retention_days": 30,
+  "profiles": {
+    "P020": "stale",
+    "P011": "no_data",
+    "A.oil_leak.false_alert": "partial"
+  },
+  "gaps": {"P021": [[-2400, -1800]]},
+  "numeric_milli": {
+    "P001": {"-50": 62000, "-40": 68000, "-30": 72000, "-20": 72000, "-10": 64000, "0": 58000},
+    "P020": {"-90": 5020},
+    "P022": {"0": 910},
+    "P170": {"0": 820},
+    "A.ion_survey.dose_rate": {"0": 1250},
+    "A.ion_survey.peak_charge": {"0": 12400}
+  },
+  "states": {
+    "P002": [[-3000, "warning"], [-600, "critical"], [-300, "normal"]],
+    "A.ship_detection.job": [[-3000, "running"], [-600, "exiting"], [-300, "none"]],
+    "A.oil_leak.job": [[-2400, "running"], [-600, "exiting"], [-300, "none"]]
+  },
+  "events_milli": {
+    "A.oil_leak.false_alert": [],
+    "A.ship_detection.detected": [[-4200, 500], [-1200, null], [-180, 800]],
+    "A.ion_survey.pulse_flag": [[-2700, 650], [-850, 710], [-45, 900]]
+  }
+}

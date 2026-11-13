@@ -1,0 +1,68 @@
+name: orbios-telemetry-lab
+
+x-common: &common
+  init: true
+  user: "10001:10001"
+  read_only: true
+  tmpfs:
+    - /tmp:rw,nosuid,nodev,size=64m
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  pids_limit: 256
+  pull_policy: build
+
+services:
+  worker:
+    <<: *common
+    image: "${ORB_WORKER_IMAGE:-orbios-telemetry-lab-worker:0.1.0}"
+    build:
+      context: .
+      dockerfile: Dockerfile.telemetry-lab
+      target: worker
+    network_mode: none
+    cpus: 4
+    mem_limit: 2g
+    memswap_limit: 2g
+    volumes:
+      - type: volume
+        source: worker-ipc
+        target: /run/telemetry-lab
+    healthcheck:
+      test: ["CMD", "python", "/bench/tools/telemetry_lab_container.py", "worker-health"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+      start_period: 25s
+
+  web:
+    <<: *common
+    image: "${ORB_WEB_IMAGE:-orbios-telemetry-lab-web:0.1.0}"
+    build:
+      context: .
+      dockerfile: Dockerfile.telemetry-lab
+      target: web
+    depends_on:
+      worker:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:8765:8765"
+    networks: [local-web]
+    cpus: 1
+    mem_limit: 96m
+    memswap_limit: 96m
+    volumes:
+      - type: volume
+        source: worker-ipc
+        target: /run/telemetry-lab
+        read_only: true
+    healthcheck:
+      test: ["CMD", "python", "/bench/tools/telemetry_lab_container.py", "web-health"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+
+networks:
+  local-web: {}
+
+volumes:
+  worker-ipc:
